@@ -5,7 +5,14 @@
  * Version: 1.3.6
  *
  */
-(function($) {
+
+(function (factory) {
+  if(typeof module === "object" && typeof module.exports === "object") {
+    factory(require("jquery"));
+  } else {
+    factory(jQuery);
+  }
+}(function($) {
 
   $.fn.extend({
     slimScroll: function(options) {
@@ -146,7 +153,7 @@
         {
             if ('destroy' in options)
             {
-            	return;
+              return;
             }
         }
 
@@ -277,8 +284,8 @@
           // prevent scrolling the page if necessary
           if(!releaseScroll)
           {
-  		      e.originalEvent.preventDefault();
-		      }
+            e.originalEvent.preventDefault();
+          }
           if (e.originalEvent.touches.length)
           {
             // see how far user swiped
@@ -467,4 +474,4 @@
     slimscroll: $.fn.slimScroll
   });
 
-})(jQuery);
+}));
